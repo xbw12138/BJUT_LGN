@@ -6,7 +6,9 @@ lgn.bjut.edu.cn
 * login
 
 ```
-python login.py login -u USERNAME -p PASSWORD
+ipv46 python login.py -u S201861847 -p 12138 -i 0 login
+ipv4  python login.py -u S201861847 -p 12138 -i 1 login
+ipv6  python login.py -u S201861847 -p 12138 -i 2 login
 ```
 
 * logout
