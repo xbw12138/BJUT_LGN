@@ -4,13 +4,16 @@ import chardet
 import re
 
 """
-登陆 python login.py -u S201861847 -p 12138 login
+登陆ipv46 python login.py -u S201861847 -p 12138 -i 0 login
+登陆ipv4  python login.py -u S201861847 -p 12138 -i 1 login
+登陆ipv6  python login.py -u S201861847 -p 12138 -i 2 login
 注销 python login.py logout
 """
 parser = argparse.ArgumentParser(description='BJUT 网关登陆')
 parser.add_argument("action", type=str, help="输入login or logout")
 parser.add_argument('--username', '-u', type=str, default="S201861847", help='网关用户名')
 parser.add_argument('--password', '-p', type=str, default="S201861847", help='网关密码')
+parser.add_argument('--ipv46', '-i', type=str, default="0", help='登陆ipv4or6, 0 all, 1 ipv4, 2 ipv6')
 args = parser.parse_args()
 headers = {
             'Host': 'lgn.bjut.edu.cn',
@@ -22,9 +25,7 @@ headers = {
         }
 if args.action == "login":
     url = "https://lgn.bjut.edu.cn/"
-    username = args.username
-    password = args.password
-    payload = 'DDDDD={}&upass={}&v46s=0&v6ip=&f4serip=172.30.201.10&0MKKey='.format(username, password)
+    payload = 'DDDDD={}&upass={}&v46s={}&v6ip=&f4serip=172.30.201.10&0MKKey='.format(args.username, args.password, args.ipv46)
     response = requests.request("POST", url, headers=headers, data = payload)
     response.encoding=chardet.detect(response.content)['encoding']
     pattern = re.compile(r'<title>(.*?)</title>')
