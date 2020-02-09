@@ -24,7 +24,7 @@ if args.action == "login":
     url = "https://lgn.bjut.edu.cn/"
     username = args.username
     password = args.password
-    payload = 'DDDDD={}&upass={}&v46s=1&v6ip=&f4serip=172.30.201.10&0MKKey='.format(username, password)
+    payload = 'DDDDD={}&upass={}&v46s=0&v6ip=&f4serip=172.30.201.10&0MKKey='.format(username, password)
     response = requests.request("POST", url, headers=headers, data = payload)
     response.encoding=chardet.detect(response.content)['encoding']
     pattern = re.compile(r'<title>(.*?)</title>')
