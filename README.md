@@ -18,5 +18,10 @@ python login.py logout
 ```
 
 ### requirements.txt
+
+```
+pip install --no-index --ignore-installed --find-links=packages -r requirements.txt
+```
+
 * [x] requests == 2.18.4
 * [x] chardet  == 3.0.4
